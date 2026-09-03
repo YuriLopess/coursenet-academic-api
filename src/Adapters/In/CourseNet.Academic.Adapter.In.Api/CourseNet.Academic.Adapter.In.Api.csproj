@@ -1,0 +1,20 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net9.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <RootNamespace>CourseNet.Academic.Adapter.In.Api</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="9.0.6" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\Core\CourseNet.Academic.Core\CourseNet.Academic.Core.csproj" />
+    <ProjectReference Include="..\..\Out\CourseNet.Academic.Adapter.Out.Persistence\CourseNet.Academic.Adapter.Out.Persistence.csproj" />
+    <ProjectReference Include="..\..\Out\CourseNet.Academic.Adapter.Out.Auth\CourseNet.Academic.Adapter.Out.Auth.csproj" />
+  </ItemGroup>
+
+</Project>
