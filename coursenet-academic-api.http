@@ -1,0 +1,6 @@
+@coursenet_academic_api_HostAddress = http://localhost:5288
+
+GET {{coursenet_academic_api_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
