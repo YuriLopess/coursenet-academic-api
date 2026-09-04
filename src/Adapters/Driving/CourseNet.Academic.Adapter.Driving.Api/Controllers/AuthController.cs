@@ -17,28 +17,12 @@ public class AuthController : ControllerBase
         _logger = logger;
     }
 
-    /// <summary>
-    /// Autentica um aluno a partir de e-mail e senha.
-    /// </summary>
-    /// <remarks>
-    /// Em caso de sucesso, o corpo da resposta é o token JWT em <b>texto puro</b> — não é um
-    /// objeto JSON, é a string do token diretamente, sem aspas nem envelope.
-    /// Esse token deve ser enviado nas próximas requisições autenticadas no header
-    /// <c>Authorization: Bearer: {token}</c>.
-    /// </remarks>
-    /// <param name="request">E-mail e senha do aluno.</param>
-    /// <response code="200">
-    /// Login realizado com sucesso. Corpo da resposta: token JWT em texto puro (content-type <c>text/plain</c>).
-    /// </response>
-    /// <response code="400">
-    /// Requisição malformada — e-mail ou senha não foram enviados no corpo da requisição.
-    /// Validações de formato (e-mail válido, senha mínima, etc.) ainda serão adicionadas.
-    /// </response>
-    /// <response code="401">E-mail ou senha não conferem com nenhum aluno cadastrado.</response>
-    /// <response code="500">
-    /// Falha interna ao processar o login — por exemplo, banco de dados indisponível
-    /// ou outro serviço externo fora do ar. O corpo da resposta não expõe detalhes internos.
-    /// </response>
+    /// <summary>Autentica um aluno por e-mail e senha.</summary>
+    /// <remarks>Retorna o JWT em texto puro. Enviar como <c>Authorization: Bearer: {token}</c>.</remarks>
+    /// <response code="200">Token JWT em texto puro.</response>
+    /// <response code="400">E-mail ou senha ausentes.</response>
+    /// <response code="401">E-mail ou senha inválidos.</response>
+    /// <response code="500">Falha interna (banco de dados ou serviço externo).</response>
     [HttpPost("login")]
     [ProducesResponseType(typeof(string), StatusCodes.Status200OK, "text/plain")]
     [ProducesResponseType(typeof(ValidationProblemDetails), StatusCodes.Status400BadRequest, "application/problem+json")]
